@@ -22,7 +22,7 @@ def main():
 
     while True:
         if keyboard.is_pressed("r+1"):
-            print("Keys Pressed - r+1 - Filling first page only")
+            print("Keys Pressed - r+1 - Filling FORM only")
             formFill()
             debounce_key("r+1")  # Wait until the key is released
 
