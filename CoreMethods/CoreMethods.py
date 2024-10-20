@@ -256,6 +256,7 @@ def formFill():
         autoit.send("{TAB}")
         speed_for_first_page(speed)
         selectGenderDropdown(person['gender'])
+        time.sleep(0.2)
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         speed_for_first_page(speed)
