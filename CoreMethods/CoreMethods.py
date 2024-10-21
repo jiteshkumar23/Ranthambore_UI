@@ -35,7 +35,7 @@ from config import delay_correct, delay_error, paxOfPerson1, machine, nameOfPers
     nameOfPerson11, paxOfPerson11, countOfPersons, speed
 
 global image_directory, RanthamboreTigerReserve_image_path, selectTouristType_image_path, agreeToCancellation_image_path, \
-    agreeToTermsConditions_image_path
+    agreeToTermsConditions_image_path,MemberDetails_image_path
 
 
 def printDateTime():
@@ -229,7 +229,7 @@ def formFill():
     for i in range(int(countOfPersons)):
         person = persons_list[i]
         pyautogui.press('pageup')
-        pyautogui.click(find_image_on_screen_using_opencv(RanthamboreTigerReserve_image_path, 600))
+        pyautogui.click(find_image_on_screen_using_opencv(MemberDetails_image_path, 600))
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         time.sleep(0.2)
@@ -321,6 +321,9 @@ def setImagePath():
 
     global agreeToTermsConditions_image_path
     agreeToTermsConditions_image_path = os.path.join(image_directory, 'agreeToTermsConditions.png')
+
+    global MemberDetails_image_path
+    MemberDetails_image_path = os.path.join(image_directory, 'MemberDetails.png')
 
 
 def days_difference_with_checkInDate(checkOutDate1):
