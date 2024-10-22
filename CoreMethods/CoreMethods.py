@@ -305,7 +305,7 @@ def find_image_on_screen_using_opencv(template_path1, timeout, threshold=0.7):
         if time.time() - start_time > timeout:
             return None
 
-        time.sleep(0.5)
+        time.sleep(0.01)
 
 
 def setImagePath():
