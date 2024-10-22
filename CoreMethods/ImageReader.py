@@ -38,8 +38,8 @@ def read_text_from_section(x, y, width, height):
 if __name__ == '__main__':
     print_hi('PyCharm')
     # Define the region of interest (ROI) on the screen
-    time.sleep(1)
-    text = read_text_from_section(1276, 931, 235, 81)
+    time.sleep(2)
+    text = read_text_from_section(1276, 813, 241, 98)
     print("Extracted Text:", text)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
