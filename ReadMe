@@ -13,7 +13,7 @@ Existing PyCharm Software
    Select New Window
 
 4) Open Ranthambore.py under Python Scripts
-5) Use Existing Interpreter
+5) Configure Python Interpreter --> Add new interpreter --> add local
 6) OK
 7) Error will go away
 8) Go to Terminal and run following command
