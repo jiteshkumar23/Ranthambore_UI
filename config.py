@@ -1,12 +1,12 @@
 # laptop or desktop
-machine = "laptop"
+machine = "desktop"
 
 # SPEED Selection
 speed = 0.0  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
 delay_correct = 0.0  # delay between typing - 0.1 is more human like , 0.01 is super fast , 0.0 is GOD mode
 delay_error = 0.0  # pause after wrong value is typed , 0.3 is more human like,  0.01 is super fast , 0.0 is GOD mode
 
-countOfPersons = 20
+countOfPersons =15
 
 # Details of 20 Passengers
 paxOfPerson1 = "Foreigner"  # "Indian" , "Foreigner"

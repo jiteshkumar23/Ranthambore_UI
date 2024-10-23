@@ -2,22 +2,22 @@ First Time Install
 
 1) Download and Install PyCharm Community Edition
 https://www.jetbrains.com/pycharm/download/?section=windows
-
 2) Get from VCS (versioning control system)
-
 3) click on Download and Install option shown for Git
 
-4) Enter this URL - https://github.com/jiteshkumar23/Ranthambore_UI
+Existing PyCharm Software
 
-5) Clone and Trust Project
+1) File--> Project from Version Control
+2) Enter this URL - https://github.com/jiteshkumar23/Ranthambore_UI
+3) Clone and Trust Project
+   Select New Window
 
-6) Open Corbett.py under Python Scripts
-7) Configure Python Interpreter --> Add new interpreter -->Add local Interpreter
-8) OK
-9) This will install Python 3.12.3 in the system
-10) Error will go away
-11) Go to Terminal and run following command
-pip install keyboard, autoit, pyautoit, pyautogui, opencv-python, Pillow
+4) Open Ranthambore.py under Python Scripts
+5) Use Existing Interpreter
+6) OK
+7) Error will go away
+8) Go to Terminal and run following command
+9) pip install keyboard, autoit, pyautoit, pyautogui, opencv-python, Pillow
 
 
 For Daily Use :

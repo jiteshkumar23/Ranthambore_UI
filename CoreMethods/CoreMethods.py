@@ -273,6 +273,8 @@ def formFill():
             pyautogui.press('pageup')
         print(f"Iteration {i + 1}" + " complete")
 
+    multiplePressUsingPyAutoGUI('pagedown',3)
+    time.sleep(0.5)
     x1, y1, z1, i1 = find_image_on_screen_using_opencv(agreeToCancellation_image_path, 10)
     pyautogui.click(x1, y1)
     x2, y2, z2, i2 = find_image_on_screen_using_opencv(agreeToTermsConditions_image_path, 10)
