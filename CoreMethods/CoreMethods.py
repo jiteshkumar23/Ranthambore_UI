@@ -11,6 +11,7 @@ import keyboard
 import numpy as np
 import pyautogui
 from autoit import autoit
+import datetime
 
 from config import delay_correct, delay_error, paxOfPerson1, machine, nameOfPerson1, mobileOfPerson1, \
     idTypeOfPerson1, idNumberOfPerson1, genderOfPerson1, paxOfPerson2, nameOfPerson2, mobileOfPerson2, idTypeOfPerson2, \
@@ -32,14 +33,49 @@ from config import delay_correct, delay_error, paxOfPerson1, machine, nameOfPers
     nameOfPerson14, paxOfPerson14, genderOfPerson13, idNumberOfPerson13, idTypeOfPerson13, mobileOfPerson13, \
     nameOfPerson13, paxOfPerson13, genderOfPerson12, idNumberOfPerson12, idTypeOfPerson12, mobileOfPerson12, \
     nameOfPerson12, paxOfPerson12, genderOfPerson11, idNumberOfPerson11, idTypeOfPerson11, mobileOfPerson11, \
-    nameOfPerson11, paxOfPerson11, countOfPersons, speed
+    nameOfPerson11, paxOfPerson11, countOfPersons, speed, timer
 
 global image_directory, RanthamboreTigerReserve_image_path, selectTouristType_image_path, agreeToCancellation_image_path, \
-    agreeToTermsConditions_image_path,MemberDetails_image_path
+    agreeToTermsConditions_image_path, MemberDetails_image_path
+
+timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
+timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
+timeStart3, timeEnd3, timer3 = '0:0:0.0', '0:0:0.0', timer
+timeStart4, timeEnd4, timer4 = '0:0:0.0', '0:0:0.0', timer
+timeStart5, timeEnd5, timer5 = '0:0:0.0', '0:0:0.0', timer
+timeStart6, timeEnd6, timer6 = '0:0:0.0', '0:0:0.0', timer
+timeStart7, timeEnd7, timer7 = '0:0:0.0', '0:0:0.0', timer
+timeStart8, timeEnd8, timer8 = '0:0:0.0', '0:0:0.0', timer
+timeStart9, timeEnd9, timer9 = '0:0:0.0', '0:0:0.0', timer
+timeStart10, timeEnd10, timer10 = '0:0:0.0', '0:0:0.0', timer
+timeStart11, timeEnd11, timer11 = '0:0:0.0', '0:0:0.0', timer
+timeStart12, timeEnd12, timer12 = '0:0:0.0', '0:0:0.0', timer
+timeStart13, timeEnd13, timer13 = '0:0:0.0', '0:0:0.0', timer
+timeStart14, timeEnd14, timer14 = '0:0:0.0', '0:0:0.0', timer
+timeStart15, timeEnd15, timer15 = '0:0:0.0', '0:0:0.0', timer
+timeStart16, timeEnd16, timer16 = '0:0:0.0', '0:0:0.0', timer
+timeStart17, timeEnd17, timer17 = '0:0:0.0', '0:0:0.0', timer
+timeStart18, timeEnd18, timer18 = '0:0:0.0', '0:0:0.0', timer
+timeStart19, timeEnd19, timer19 = '0:0:0.0', '0:0:0.0', timer
+timeStart20, timeEnd20, timer20 = '0:0:0.0', '0:0:0.0', timer
 
 
 def printDateTime():
-    print(f"End time: {datetime.datetime.now().strftime("%H:%M:%S.%f")[:-3]}")
+    print(f"Time: {datetime.datetime.now().strftime("%H:%M:%S.%f")[:-3]}")
+
+
+def getDateTime():
+    return datetime.datetime.now().strftime("%H:%M:%S.%f")[:-3]
+
+
+def getTimeDiff(timeStart2, timeStart):
+    # Calculate the difference
+    fmt = "%H:%M:%S.%f"
+    start_dt = datetime.datetime.strptime(timeStart, fmt)
+    end_dt = datetime.datetime.strptime(timeStart2, fmt)
+    diff = end_dt - start_dt
+    print("Difference is : ", diff)
+    return diff
 
 
 def multiplePressUsingPyAutoGUI(key, times):
@@ -193,6 +229,8 @@ def autoit_slow_type_with_error(text):
 
 
 def autoit_slow_type_numbers_with_error(numbers):
+    if not numbers:  # Check if numbers is None or empty
+        return
     # Choose a random position to make a typing error
     error_position = random.randint(0, len(numbers) - 1)
     # Choose a random digit as the incorrect character
@@ -224,29 +262,28 @@ def debounce_key(key):
 
 
 def formFill():
-    # Example: Run a for loop 5 times
     persons_list = get_persons_list()
     for i in range(int(countOfPersons)):
         person = persons_list[i]
         pyautogui.press('pageup')
         pyautogui.click(find_image_on_screen_using_opencv(MemberDetails_image_path, 600))
+        #Set time Start here
+        setTimeStart(i)
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         time.sleep(0.1)
         speed_for_first_page(speed)
         print(person['pax'])
         selectPaxDropdown(person['pax'])
-        speed_for_first_page(speed)
         autoit.send("{TAB}")
         speed_for_first_page(speed)
-        # autoit_slow_type_with_error(person['name'])
-        pyautogui.typewrite(person['name'])
-        speed_for_first_page(speed)
+        autoit_slow_type_with_error(person['name'].strip())
+        # pyautogui.typewrite(person['name'])
         autoit.send("{TAB}")
         speed_for_first_page(speed)
-        # human_typing(person['mobile'])
+        autoit_slow_type_numbers_with_error(person['mobile'].strip())
         # autoit.send(person['mobile'])
-        pyautogui.typewrite(person['mobile'])
+        # pyautogui.typewrite(person['mobile'])
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         speed_for_first_page(speed)
@@ -254,9 +291,10 @@ def formFill():
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         speed_for_first_page(speed)
-        # autoit_slow_type_numbers_with_error(person['idNumber'])
+        autoit_slow_type_numbers_with_error(person['idNumber'].strip())
         # autoit.send(person['idNumber'])
-        pyautogui.typewrite(person['idNumber'])
+        # pyautogui.typewrite(person['idNumber'])
+        # human_typing(person['idNumber'])
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         speed_for_first_page(speed)
@@ -265,6 +303,7 @@ def formFill():
         speed_for_first_page(speed)
         autoit.send("{TAB}")
         speed_for_first_page(speed)
+        setTimeEndAndWaitForTimer(i)
         autoit.send("{ENTER}")
         speed_for_first_page(speed)
         find_image_on_screen_using_opencv(selectTouristType_image_path, 60)
@@ -273,13 +312,14 @@ def formFill():
             pyautogui.press('pageup')
         print(f"Iteration {i + 1}" + " complete")
 
-    multiplePressUsingPyAutoGUI('pagedown',3)
+    multiplePressUsingPyAutoGUI('pagedown', 3)
     time.sleep(0.5)
     x1, y1, z1, i1 = find_image_on_screen_using_opencv(agreeToCancellation_image_path, 10)
     pyautogui.click(x1, y1)
     x2, y2, z2, i2 = find_image_on_screen_using_opencv(agreeToTermsConditions_image_path, 10)
     pyautogui.click(x2, y2)
     autoit.send("{TAB}")
+    printDateTime()
 
 
 def find_image_on_screen_using_opencv(template_path1, timeout, threshold=0.7):
@@ -603,3 +643,43 @@ def get_persons_list():
         "gender": genderOfPerson20
     })
     return persons
+
+
+def setTimeStart(i):
+    print("value of i is: ", i)
+    time_start_vars = {0: 'timeStart1', 1: 'timeStart2', 2: 'timeStart3', 3: 'timeStart4', 4: 'timeStart5',
+                       5: 'timeStart6', 6: 'timeStart7', 7: 'timeStart8', 8: 'timeStart9', 9: 'timeStart10',
+                       10: 'timeStart11', 11: 'timeStart12', 12: 'timeStart13', 13: 'timeStart14', 14: 'timeStart15',
+                       15: 'timeStart16', 16: 'timeStart17', 17: 'timeStart18', 18: 'timeStart19', 19: 'timeStart20'}
+    global_vars = globals()
+    if i in time_start_vars:
+        global_vars[time_start_vars[i]] = getDateTime()
+        print(f"Start time for Person {i} is: ", global_vars[time_start_vars[i]])
+
+
+def setTimeEndAndWaitForTimer(i):
+    print("value of i is: ", i)
+    time_vars = {
+        0: 'timeEnd1', 1: 'timeEnd2', 2: 'timeEnd3', 3: 'timeEnd4', 4: 'timeEnd5',
+        5: 'timeEnd6', 6: 'timeEnd7', 7: 'timeEnd8', 8: 'timeEnd9', 9: 'timeEnd10',
+        10: 'timeEnd11', 11: 'timeEnd12', 12: 'timeEnd13', 13: 'timeEnd14', 14: 'timeEnd15',
+        15: 'timeEnd16', 16: 'timeEnd17', 17: 'timeEnd18', 18: 'timeEnd19', 19: 'timeEnd20'
+    }
+    start_vars = {
+        0: 'timeStart1', 1: 'timeStart2', 2: 'timeStart3', 3: 'timeStart4', 4: 'timeStart5',
+        5: 'timeStart6', 6: 'timeStart7', 7: 'timeStart8', 8: 'timeStart9', 9: 'timeStart10',
+        10: 'timeStart11', 11: 'timeStart12', 12: 'timeStart13', 13: 'timeStart14', 14: 'timeStart15',
+        15: 'timeStart16', 16: 'timeStart17', 17: 'timeStart18', 18: 'timeStart19', 19: 'timeStart20'
+    }
+    global_vars = globals()
+
+    if i in time_vars:
+        global_vars[time_vars[i]] = getDateTime()
+        print(f"End time for Person {i} is: ", global_vars[time_vars[i]])
+        diff = getTimeDiff(global_vars[time_vars[i]], global_vars[start_vars[i]])
+        if diff >= datetime.timedelta(seconds=timer):
+            print(f"{timer} seconds have passed. Pressing ADD!")
+        else:
+            remaining_seconds = timer - diff.total_seconds()
+            print(f"Waiting for an additional {remaining_seconds} seconds.")
+            time.sleep(remaining_seconds)
