@@ -262,6 +262,7 @@ def debounce_key(key):
 
 
 def formFill():
+    print("Execution Started At: ", getDateTime())
     persons_list = get_persons_list()
     for i in range(int(countOfPersons)):
         person = persons_list[i]
@@ -312,6 +313,7 @@ def formFill():
             pyautogui.press('pageup')
         print(f"Iteration {i + 1}" + " complete")
 
+    print("Execution Ended (form filling)  At: ", getDateTime())
     multiplePressUsingPyAutoGUI('pagedown', 3)
     time.sleep(0.5)
     x1, y1, z1, i1 = find_image_on_screen_using_opencv(agreeToCancellation_image_path, 10)
@@ -404,42 +406,53 @@ def days_difference_with_checkInDate_checkOutDate(checkInDate1, checkOutDate1):
 def selectPaxDropdown(case_value):
     if case_value.lower() == "indian":
         multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("in")
         autoit.send("{ENTER}")
     elif case_value.lower() == "foreigner":
-        multiplePressUsingPyAutoGUI('down', 2)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("fo")
         autoit.send("{ENTER}")
 
 
 def selectIdentityProofDropdown(case_value):
     if case_value.lower() == "aadhar":
         multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("aad")
         autoit.send("{ENTER}")
     elif case_value.lower() == "passport":
-        multiplePressUsingPyAutoGUI('down', 2)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("pas")
         autoit.send("{ENTER}")
     elif case_value.lower() == "driving license":
-        multiplePressUsingPyAutoGUI('down', 3)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("dri")
         autoit.send("{ENTER}")
     elif case_value.lower() == "voter id":
-        multiplePressUsingPyAutoGUI('down', 4)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("vot")
         autoit.send("{ENTER}")
     elif case_value.lower() == "pan card":
-        multiplePressUsingPyAutoGUI('down', 5)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("pan")
         autoit.send("{ENTER}")
     elif case_value.lower() == "office id":
-        multiplePressUsingPyAutoGUI('down', 6)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("off")
         autoit.send("{ENTER}")
     elif case_value.lower() == "student id":
-        multiplePressUsingPyAutoGUI('down', 7)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("stu")
         autoit.send("{ENTER}")
 
 
 def selectGenderDropdown(case_value):
     if case_value.lower() == "male":
         multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("ma")
         autoit.send("{ENTER}")
     elif case_value.lower() == "female":
-        multiplePressUsingPyAutoGUI('down', 2)
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("fe")
         autoit.send("{ENTER}")
 
 
