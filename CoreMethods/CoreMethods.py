@@ -33,10 +33,10 @@ from config import delay_correct, delay_error, paxOfPerson1, machine, nameOfPers
     nameOfPerson14, paxOfPerson14, genderOfPerson13, idNumberOfPerson13, idTypeOfPerson13, mobileOfPerson13, \
     nameOfPerson13, paxOfPerson13, genderOfPerson12, idNumberOfPerson12, idTypeOfPerson12, mobileOfPerson12, \
     nameOfPerson12, paxOfPerson12, genderOfPerson11, idNumberOfPerson11, idTypeOfPerson11, mobileOfPerson11, \
-    nameOfPerson11, paxOfPerson11, countOfPersons, speed, timer
+    nameOfPerson11, paxOfPerson11, countOfPersons, speed, timer, Person1AttachmentName
 
 global image_directory, RanthamboreTigerReserve_image_path, selectTouristType_image_path, agreeToCancellation_image_path, \
-    agreeToTermsConditions_image_path, MemberDetails_image_path
+    agreeToTermsConditions_image_path, MemberDetails_image_path, UploadDocument_image_path
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
 timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
@@ -302,7 +302,19 @@ def formFill():
         selectGenderDropdown(person['gender'])
         time.sleep(0.1)
         speed_for_first_page(speed)
-        autoit.send("{TAB}")
+        # autoit.send("{TAB}")
+        if i == 0:
+            pyautogui.click(find_image_on_screen_using_opencv(UploadDocument_image_path, 60))
+            time.sleep(1)
+            pyautogui.typewrite(Person1AttachmentName)
+            autoit.send("{ENTER}")
+            time.sleep(0.25)
+            autoit.send("{TAB}")
+            autoit.send("{TAB}")
+        else:
+            autoit.send("{TAB}")
+            autoit.send("{TAB}")
+            autoit.send("{TAB}")
         speed_for_first_page(speed)
         setTimeEndAndWaitForTimer(i)
         autoit.send("{ENTER}")
@@ -373,6 +385,9 @@ def setImagePath():
 
     global MemberDetails_image_path
     MemberDetails_image_path = os.path.join(image_directory, 'MemberDetails.png')
+
+    global UploadDocument_image_path
+    UploadDocument_image_path = os.path.join(image_directory, 'UploadDocument.png')
 
 
 def days_difference_with_checkInDate(checkOutDate1):
