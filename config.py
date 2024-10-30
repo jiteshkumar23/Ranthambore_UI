@@ -2,14 +2,14 @@
 machine = "desktop"
 
 # SPEED Selection
-speed = 0.09  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
-delay_correct = 0.11  # delay between typing - 0.1 is more human like , 0.01 is super fast , 0.0 is GOD mode
+speed = 0.1  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
+delay_correct = 0.12  # delay between typing - 0.1 is more human like , 0.01 is super fast , 0.0 is GOD mode
 delay_error = 0.3  # pause after wrong value is typed , 0.3 is more human like,  0.01 is super fast , 0.0 is GOD mode
 
 #0.1, 0.12, 0.3
 
 countOfPersons = 6
-timer = 7.8
+timer = 8
 
 # Details of 20 Passengers
 paxOfPerson1 = "Indian"  # "Indian" , "Foreigner"
@@ -18,7 +18,7 @@ mobileOfPerson1 = "9879584502"
 idTypeOfPerson1 = "Passport"  #"Aadhar","Passport","Driving License","Voter Id","Pan Card","Office ID","Student Id"
 idNumberOfPerson1 = "AB123456"
 genderOfPerson1 = "Female"  # "Male", "Female"
-Person1AttachmentName = "Person1.png"
+Person1AttachmentName = r"C:\Users\Admin\Videos\Captures\Person1Document.jpeg"
 
 paxOfPerson2 = "Indian"
 nameOfPerson2 = "Jane Smith"
