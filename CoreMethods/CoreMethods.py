@@ -317,12 +317,18 @@ def formFill():
             autoit.send("{TAB}")
         speed_for_first_page(speed)
         setTimeEndAndWaitForTimer(i)
+        keyboard.wait('alt+q')
         autoit.send("{ENTER}")
+        for _ in range(2):  # Adjust the range as needed
+            pyautogui.click(x=0, y=pyautogui.size().height//2)
+            keyboard.press_and_release('page up')
+        print(f"Iteration {i + 1}" + " complete")
         speed_for_first_page(speed)
         find_image_on_screen_using_opencv(selectTouristType_image_path, 60)
         time.sleep(0.1)
         for _ in range(2):  # Adjust the range as needed
-            pyautogui.press('pageup')
+            pyautogui.click(x=0, y=pyautogui.size().height//2)
+            keyboard.press_and_release('page up')
         print(f"Iteration {i + 1}" + " complete")
 
     print("Execution Ended (form filling)  At: ", getDateTime())
